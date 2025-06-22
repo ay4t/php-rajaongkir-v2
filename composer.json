@@ -1,0 +1,85 @@
+{
+    "name": "ay4t/php-rajaongkir-v2",
+    "description": "PHP Library for RajaOngkir V2 API - Integrasi mudah dengan layanan pengiriman RajaOngkir di aplikasi PHP Anda",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["rajaongkir", "shipping", "ongkir", "api", "php", "indonesia"],
+    "homepage": "https://github.com/ay4t/php-rajaongkir-v2",
+    "authors": [
+        {
+            "name": "Ayatulloh Ahad R",
+            "email": "ayatullohahadr@gmail.com",
+            "homepage": "https://github.com/ay4t",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "vlucas/phpdotenv": "^5.3",
+        "ay4t/php-rest-client": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^1.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "php-coveralls/php-coveralls": "^2.5",
+        "php-mock/php-mock-phpunit": "^2.6",
+        "mockery/mockery": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "RajaOngkir\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "test-ci": "phpunit --coverage-clover=coverage.xml",
+        "cs-check": "phpcs --standard=PSR12 src tests",
+        "cs-fix": "phpcbf --standard=PSR12 src tests",
+        "phpstan": "phpstan analyse --level=max src",
+        "analyse": "phpstan analyse",
+        "check": [
+            "@test",
+            "@cs-check",
+            "@phpstan"
+        ],
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run PHPUnit tests",
+        "test-coverage": "Generate HTML code coverage report",
+        "test-ci": "Run tests for CI with coverage",
+        "cs-check": "Check code style with PHP_CodeSniffer",
+        "cs-fix": "Automatically fix code style issues",
+        "phpstan": "Run static analysis with PHPStan",
+        "analyse": "Alias for phpstan",
+        "check": "Run all tests and checks"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/ay4t/php-rajaongkir-v2/issues",
+        "source": "https://github.com/ay4t/php-rajaongkir-v2",
+        "docs": "https://github.com/ay4t/php-rajaongkir-v2#readme"
+    }
+}
